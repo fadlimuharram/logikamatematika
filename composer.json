@@ -1,0 +1,10 @@
+{
+    "name": "root/logmtk",
+    "description": "logika mtk",
+    "require": {},
+    "autoload":{
+      "psr-4":{
+        "Matematika\\":"Matematika"
+      }
+    }
+}
