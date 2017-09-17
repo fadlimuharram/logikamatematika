@@ -13,8 +13,8 @@ class LogikaFactory{
       'itu buku saya'=>'s'
     ]
   ];
-  public function __construct(){
-    $this->input = new \Matematika\Logika\Input\Input($this->contoh);
+  public function __construct($userInput){
+    $this->input = new \Matematika\Logika\Input\Input($userInput);
     $this->negasiinput = new \Matematika\Logika\Negasi\Negasi($this->input);
     $this->negasiinput = $this->negasiinput->convert();
     //$this->negasiinput = new \Matematika\Logika\Negasi\Input\Input($this->negasiinput);
@@ -37,8 +37,21 @@ class LogikaFactory{
   }
 
   public function negasikonjungsi(){
-    return new \Matematika\Logika\Konjungsi\Konjungsi($this->negasiinput);
+    return new \Matematika\Logika\Konjungsi\Konjungsi($this->negasiinput,TRUE);
   }
+
+  public function negasidisjungsi(){
+    return new \Matematika\Logika\Disjungsi\Disjungsi($this->negasiinput,TRUE);
+  }
+
+  public function negasiimplikasi(){
+    return new \Matematika\Logika\Implikasi\Implikasi($this->negasiinput,TRUE);
+  }
+  public function negasibiimplikasi(){
+    return new \Matematika\Logika\Biimplikasi\Biimplikasi($this->negasiinput,TRUE);
+  }
+
+
   /*
 
   [

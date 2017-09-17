@@ -6,9 +6,12 @@ class Biimplikasi{
 
   private $input;
   private $result;
+  private $negasi;
 
-  public function __construct(Input $input){
+  public function __construct(Input $input,$negasi = FALSE){
     $this->input = $input;
+    $this->negasi = $negasi;
+    $this->prosess();
   }
 
   private function prosess(){
@@ -24,13 +27,16 @@ class Biimplikasi{
       }
       $this->result[$no]['P'] = $soal[0];
       $this->result[$no]['Q'] = $soal[1];
-      $this->result[$no]['Konjungsi'] = $this->kondisi($data[0],$data[1]);
+      if ($this->negasi === FALSE) {
+        $this->result[$no]['biimplikasi'] = $this->kondisi($data[0],$data[1]);
+      }elseif ($this->negasi === TRUE) {
+        $this->result[$no]['negasibiimplikasi'] = $this->kondisi($data[0],$data[1]);
+      }
+
       $soal = [];
       $no++;
     }
-    echo'<pre>';
-    print_r($this->result);
-    echo'</pre>';
+
   }
 
   private function kondisi($p,$q){
@@ -46,8 +52,8 @@ class Biimplikasi{
   }
 
 
-  public function tes(){
-    return $this->prosess();
+  public function hasil(){
+    return $this->result;
   }
 
 }

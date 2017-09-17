@@ -6,9 +6,11 @@ class Disjungsi{
 
   private $input;
   private $result;
+  private $negasi;
 
-  public function __construct(Input $input){
+  public function __construct(Input $input,$negasi = FALSE){
     $this->input = $input;
+    $this->negasi = $negasi;
     $this->prosess();
   }
 
@@ -25,7 +27,12 @@ class Disjungsi{
       }
       $this->result[$no]['P'] = $soal[0];
       $this->result[$no]['Q'] = $soal[1];
-      $this->result[$no]['Konjungsi'] = $this->kondisi($data[0],$data[1]);
+      if ($this->negasi === FALSE) {
+        $this->result[$no]['disjungsi'] = $this->kondisi($data[0],$data[1]);
+      }elseif ($this->negasi === TRUE) {
+        $this->result[$no]['negasidisjungsi'] = $this->kondisi($data[0],$data[1]);
+      }
+
       $soal = [];
       $no++;
     }
