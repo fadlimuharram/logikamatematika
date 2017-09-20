@@ -63,7 +63,7 @@ $negasikonjungsi = $baru->negasikonjungsi()->hasil();
 $negasidisjungsi = $baru->negasidisjungsi()->hasil();
 $negasiimplikasi = $baru->negasiimplikasi()->hasil();
 $negasibiimplikasi = $baru->negasibiimplikasi()->hasil();
-
+$negasi = $baru->negasi();
  ?>
 
           <table class="table table-striped table-hover ">
@@ -72,14 +72,16 @@ $negasibiimplikasi = $baru->negasibiimplikasi()->hasil();
                 <th>No</th>
                 <th>P</th>
                 <th>Q</th>
-                <th>Konjungsi</th>
-                <th>disjungsi</th>
-                <th>Implikasi</th>
-                <th>Biimplikasi</th>
-                <th>NegasiKonjungsi</th>
-                <th>NegasiDisjungsi</th>
-                <th>NegasiImplikasi</th>
-                <th>NegasiBiimplikasi</th>
+                <th>~P</th>
+                <th>~Q</th>
+                <th>(P &and; Q)</th>
+                <th>(P &or; Q)</th>
+                <th>(P => Q)</th>
+                <th>(P <=> Q)</th>
+                <th>(~P &or; ~Q)</th>
+                <th>(~P &and; ~Q)</th>
+                <th>(P &and; ~Q)</th>
+                <th>~(P <=> Q)</th>
               </tr>
             </thead>
             <tbody>
@@ -87,6 +89,7 @@ $negasibiimplikasi = $baru->negasibiimplikasi()->hasil();
               for ($i=0; $i <count($konjungsi); $i++) {
                 echo'<tr>
                       <td>'. ( $i + 1) .'</td>';
+
                 foreach ($konjungsi[$i] as $key2 => $value2) {
                   if ($key2 == 'P') {
                     echo'<td>'.$value2.'</td>';
@@ -94,10 +97,25 @@ $negasibiimplikasi = $baru->negasibiimplikasi()->hasil();
                   if ($key2 == 'Q') {
                     echo'<td>'.$value2.'</td>';
                   }
+
+                }
+
+                foreach ($negasi[$i] as $key2 => $value2) {
+                  $value2 = ($value2 == 1) ? "Benar" : "Salah";
+                  if ($key2 === '~P') {
+                    echo'<td>' . $value2 .'</td>';
+                  }
+                  if ($key2 === '~Q') {
+                    echo'<td>'.$value2.'</td>';
+                  }
+                }
+
+                foreach ($konjungsi[$i] as $key2 => $value2) {
                   if ($key2 == 'konjungsi') {
                     echo'<td>'.$value2.'</td>';
                   }
                 }
+
                 foreach ($disjungsi[$i] as $key2 => $value2) {
                   if ($key2 == 'disjungsi') {
                     echo'<td>'.$value2.'</td>';
@@ -133,6 +151,8 @@ $negasibiimplikasi = $baru->negasibiimplikasi()->hasil();
                     echo'<td>'.$value2.'</td>';
                   }
                 }
+
+
                 echo'</tr>';
               }
 
@@ -142,3 +162,66 @@ $negasibiimplikasi = $baru->negasibiimplikasi()->hasil();
 
             </tbody>
           </table>
+
+<?php
+echo'<pre>';
+print_r($negasikonjungsi);
+echo'</pre>';
+echo '<hr />';
+echo'<pre>';
+print_r($baru->negasi());
+echo'</pre>';
+/*
+foreach ($negasi[$i] as $key => $value) {
+  if ($key2 == '~P') {
+    echo'<td>'.$value2.'</td>';
+  }
+  if ($key2 == '~Q') {
+    echo'<td>'.$value2.'</td>';
+  }
+}
+
+foreach ($konjungsi[$i] as $key2 => $value2) {
+  if ($key2 == 'konjungsi') {
+    echo'<td>'.$value2.'</td>';
+  }
+}
+
+foreach ($disjungsi[$i] as $key2 => $value2) {
+  if ($key2 == 'disjungsi') {
+    echo'<td>'.$value2.'</td>';
+  }
+}
+foreach ($implikasi[$i] as $key2 => $value2) {
+  if ($key2 == 'implikasi') {
+    echo'<td>'.$value2.'</td>';
+  }
+}
+foreach ($biimplikasi[$i] as $key2 => $value2) {
+  if ($key2 == 'biimplikasi') {
+    echo'<td>'.$value2.'</td>';
+  }
+}
+foreach ($negasikonjungsi[$i] as $key2 => $value2) {
+  if ($key2 == 'negasikonjungsi') {
+    echo'<td>'.$value2.'</td>';
+  }
+}
+foreach ($negasidisjungsi[$i] as $key2 => $value2) {
+  if ($key2 == 'negasidisjungsi') {
+    echo'<td>'.$value2.'</td>';
+  }
+}
+foreach ($negasiimplikasi[$i] as $key2 => $value2) {
+  if ($key2 == 'negasiimplikasi') {
+    echo'<td>'.$value2.'</td>';
+  }
+}
+foreach ($negasibiimplikasi[$i] as $key2 => $value2) {
+  if ($key2 == 'negasibiimplikasi') {
+    echo'<td>'.$value2.'</td>';
+  }
+}
+
+*/
+ ?>

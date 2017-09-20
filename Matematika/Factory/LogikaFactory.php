@@ -20,6 +20,11 @@ class LogikaFactory{
     //$this->negasiinput = new \Matematika\Logika\Negasi\Input\Input($this->negasiinput);
   }
 
+  public function negasi(){
+    $negasi = new \Matematika\Logika\Negasi\Negasi($this->input);
+    return $negasi->gethasil();
+  }
+
   public function konjungsi(){
     return new \Matematika\Logika\Konjungsi\Konjungsi($this->input);
   }
@@ -37,18 +42,18 @@ class LogikaFactory{
   }
 
   public function negasikonjungsi(){
-    return new \Matematika\Logika\Konjungsi\Konjungsi($this->negasiinput,TRUE);
-  }
-
-  public function negasidisjungsi(){
     return new \Matematika\Logika\Disjungsi\Disjungsi($this->negasiinput,TRUE);
   }
 
+  public function negasidisjungsi(){
+    return new \Matematika\Logika\Konjungsi\Konjungsi($this->negasiinput,TRUE);
+  }
+
   public function negasiimplikasi(){
-    return new \Matematika\Logika\Implikasi\Implikasi($this->negasiinput,TRUE);
+    return new \Matematika\Logika\Implikasi\Implikasi($this->input,TRUE);
   }
   public function negasibiimplikasi(){
-    return new \Matematika\Logika\Biimplikasi\Biimplikasi($this->negasiinput,TRUE);
+    return new \Matematika\Logika\Biimplikasi\Biimplikasi($this->input,TRUE);
   }
 
 

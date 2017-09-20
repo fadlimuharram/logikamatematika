@@ -30,7 +30,7 @@ class Disjungsi{
       if ($this->negasi === FALSE) {
         $this->result[$no]['disjungsi'] = $this->kondisi($data[0],$data[1]);
       }elseif ($this->negasi === TRUE) {
-        $this->result[$no]['negasidisjungsi'] = $this->kondisi($data[0],$data[1]);
+        $this->result[$no]['negasikonjungsi'] = $this->kondisi($data[0],$data[1]);
       }
 
       $soal = [];

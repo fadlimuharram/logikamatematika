@@ -30,7 +30,7 @@ class Implikasi{
       if ($this->negasi === FALSE) {
         $this->result[$no]['implikasi'] = $this->kondisi($data[0],$data[1]);
       }else {
-        $this->result[$no]['negasiimplikasi'] = $this->kondisi($data[0],$data[1]);
+        $this->result[$no]['negasiimplikasi'] = $this->negasi($this->kondisi($data[0],$data[1]));
       }
       $soal = [];
       $no++;
@@ -47,6 +47,14 @@ class Implikasi{
       return 'Benar';
     }elseif ($p === 1 && $q === 0) {
       return 'Salah';
+    }
+  }
+
+  private function negasi($hasil){
+    if ($hasil === 'Benar') {
+      return 'Salah';
+    }elseif ($hasil === 'Salah') {
+      return 'Benar';
     }
   }
 

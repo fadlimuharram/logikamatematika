@@ -30,7 +30,7 @@ class Biimplikasi{
       if ($this->negasi === FALSE) {
         $this->result[$no]['biimplikasi'] = $this->kondisi($data[0],$data[1]);
       }elseif ($this->negasi === TRUE) {
-        $this->result[$no]['negasibiimplikasi'] = $this->kondisi($data[0],$data[1]);
+        $this->result[$no]['negasibiimplikasi'] = $this->negasi($this->kondisi($data[0],$data[1]));
       }
 
       $soal = [];
@@ -47,6 +47,14 @@ class Biimplikasi{
     }elseif ($p === 0 && $q === 1) {
       return 'Salah';
     }elseif ($p === 0 && $q === 0) {
+      return 'Benar';
+    }
+  }
+
+  private function negasi($hasil){
+    if ($hasil === 'Benar') {
+      return 'Salah';
+    }elseif ($hasil === 'Salah') {
       return 'Benar';
     }
   }
