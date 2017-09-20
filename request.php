@@ -164,6 +164,7 @@ $negasi = $baru->negasi();
           </table>
 
 <?php
+/*
 echo'<pre>';
 print_r($negasikonjungsi);
 echo'</pre>';
@@ -171,6 +172,7 @@ echo '<hr />';
 echo'<pre>';
 print_r($baru->negasi());
 echo'</pre>';
+*/
 /*
 foreach ($negasi[$i] as $key => $value) {
   if ($key2 == '~P') {
